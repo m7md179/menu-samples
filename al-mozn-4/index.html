@@ -1,116 +1,196 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="cafe">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Al-Mozn | المٓزنْ · قائمة رقمية</title>
+<meta property="og:title" content="Al-Mozn | المٓزنْ · قائمة رقمية">
+<meta property="og:image" content="https://m7md179.github.io/menu-samples/_img/cafe-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&family=Reem+Kufi:wght@500;600;700&family=Amiri:wght@400;700&family=Alexandria:wght@300;400;500;600&family=Lalezar&family=Marhey:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--a:#6b4a32;--bg:#f7f3ee;--card:#fff;--ink:#1f1b17;--mute:#857b70;--line:#efe7dd}
+/* ---------- theme tokens ---------- */
+[data-theme=cafe]{--bg:#e4e8df;--surf:#f3f5ef;--ink:#1d2721;--mute:#66706a;--acc:#9a5a2c;--acc-ink:#fff;--line:#cfd6c9;--disp:'Reem Kufi',sans-serif;--body:'Readex Pro',sans-serif;--radius:22px;--hero-tint:rgba(29,39,33,.55)}
+[data-theme=dining]{--bg:#1f1520;--surf:#2a1d2b;--ink:#efe3cc;--mute:#a8977e;--acc:#c9a15b;--acc-ink:#1f1520;--line:#3d2d3e;--disp:'Amiri',serif;--body:'Alexandria',sans-serif;--radius:4px;--hero-tint:rgba(20,12,20,.62)}
+[data-theme=dining][data-tone=sea]{--bg:#0f2230;--surf:#16303f;--line:#24475b;--acc:#d7b377;--acc-ink:#0f2230;--hero-tint:rgba(8,22,32,.62)}
+[data-theme=dining][data-tone=ember]{--bg:#1a1312;--surf:#251b19;--line:#3a2b28;--acc:#d9483b;--acc-ink:#fff;--hero-tint:rgba(20,10,8,.6)}
+[data-theme=street]{--bg:#f4c430;--surf:#fff6d6;--ink:#1b1b1b;--mute:#5b4a12;--acc:#c8102e;--acc-ink:#fff;--line:#1b1b1b;--disp:'Lalezar',sans-serif;--body:'Readex Pro',sans-serif;--radius:14px;--hero-tint:rgba(27,27,27,.45)}
+[data-theme=sweet]{--bg:#fbe3e8;--surf:#fff6f8;--ink:#3a1c28;--mute:#8a6070;--acc:#e04f7a;--acc-ink:#fff;--line:#f2c3cf;--disp:'Marhey',sans-serif;--body:'Readex Pro',sans-serif;--radius:28px;--hero-tint:rgba(58,28,40,.42);--acc2:#f6b24a}
+
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;font-size:15px;line-height:1.5}
-button{font:inherit;cursor:pointer}
-.demo{background:#1f1b17;color:#efe8de;font-size:12.5px;padding:7px 16px;text-align:center}
-.cover{position:relative;color:#fff;padding:28px 16px 64px;text-align:center;overflow:hidden;
- background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.18) 0 2px,transparent 3px) 0 0/26px 26px,
- linear-gradient(160deg,var(--a),color-mix(in srgb,var(--a) 60%,#000))}
-.lang{position:absolute;top:14px;inset-inline-end:14px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:4px 12px;font-size:13px}
-.logo{width:76px;height:76px;margin:6px auto 12px;border-radius:22px;background:#fff;color:var(--a);display:grid;place-items:center;font-size:36px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-.cover h1{margin:0;font-size:26px;font-weight:700}
-.cover .sub{opacity:.9;font-size:14px;margin-top:4px}
-.open{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(255,255,255,.16);padding:4px 12px;border-radius:999px;font-size:13px}
-.open i{width:8px;height:8px;border-radius:50%;background:#5ef08a;display:inline-block}
-.wrap{max-width:560px;margin:-40px auto 0;padding:0 14px 120px;position:relative}
-.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--card);border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(0,0,0,.07)}
-.actions a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--ink);font-size:12.5px;padding:6px 0;border-radius:12px}
-.actions a span{font-size:20px}
-.search{margin:14px 0 4px;position:relative}
-.search input{width:100%;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 40px 12px 14px;font:inherit;outline:none}
-.search input:focus{border-color:var(--a)}
-.search b{position:absolute;top:11px;inset-inline-start:14px;opacity:.5}
-[dir=ltr] .search input{padding:12px 14px 12px 40px}
-nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:10px 2px;background:var(--bg);scrollbar-width:none}
-nav::-webkit-scrollbar{display:none}
-nav button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 15px;font-size:14px}
-nav button.on{background:var(--a);border-color:var(--a);color:#fff}
-h2{font-size:18px;margin:18px 4px 8px;color:var(--a)}
-.item{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:16px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.item .t{flex:1;min-width:0}
-.item .n{font-weight:600}
-.item .d{color:var(--mute);font-size:13px;margin-top:1px}
-.item .p{font-weight:700;margin-top:4px}
-.item .p small{font-weight:400;color:var(--mute);font-size:12px}
-.hot{display:inline-block;font-size:11px;font-weight:600;color:var(--a);background:color-mix(in srgb,var(--a) 12%,#fff);border-radius:6px;padding:1px 7px;margin-inline-start:6px;vertical-align:2px}
-.qty{display:flex;align-items:center;gap:8px}
-.qty button{width:34px;height:34px;border-radius:11px;border:0;background:color-mix(in srgb,var(--a) 12%,#fff);color:var(--a);font-size:20px;line-height:1}
-.qty button.add{background:var(--a);color:#fff}
-.qty span{min-width:14px;text-align:center;font-weight:700}
-.empty{text-align:center;color:var(--mute);padding:30px 0;display:none}
-.qr{margin-top:22px;background:var(--card);border-radius:18px;padding:18px;text-align:center;color:var(--mute);font-size:13.5px}
-.qr img{width:132px;height:132px;display:block;margin:0 auto 8px}
-footer{text-align:center;color:var(--mute);font-size:12.5px;margin-top:18px}
-footer a{color:var(--a);font-weight:600}
-.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 14px calc(12px + env(safe-area-inset-bottom));transform:translateY(120%);transition:transform .25s}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+img{display:block;max-width:100%}
+
+/* ---------- layout ---------- */
+.side{position:relative;min-height:62vh;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.side .photo{position:absolute;inset:0;background:var(--surf) center/cover no-repeat}
+.side .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--hero-tint) 10%,rgba(0,0,0,.05) 60%,rgba(0,0,0,.25))}
+.side .in{position:relative;padding:28px 20px 26px}
+.demo{position:relative;z-index:2;font-size:12.5px;padding:8px 16px;background:var(--ink);color:var(--bg);text-align:center}
+.lang{position:absolute;top:14px;inset-inline-end:14px;z-index:3;border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.25);backdrop-filter:blur(6px);border-radius:999px;padding:5px 14px;font-size:13px;cursor:pointer;color:#fff}
+h1{font:700 clamp(40px,11vw,76px)/1.05 var(--disp);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.where{margin:10px 0 0;font-size:15px;opacity:.92}
+.acts{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.acts a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:8px 16px;font-size:14px;background:rgba(0,0,0,.18);backdrop-filter:blur(6px)}
+.acts a.wa{background:#1fae57;border-color:#1fae57}
+.acts svg{width:16px;height:16px;fill:currentColor}
+.qr{display:none}
+
+.menu{padding:0 16px 130px;max-width:760px;margin:0 auto}
+.picks{margin:26px -16px 6px;padding:0 16px;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.picks::-webkit-scrollbar{display:none}
+.pick{flex:none;width:210px;scroll-snap-align:start;background:var(--surf);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.pick .im{aspect-ratio:4/3;background:var(--line) center/cover}
+.pick .tx{padding:10px 14px 14px}
+.pick b{display:block;font-weight:600}
+.pick span{color:var(--mute);font-size:14px}
+.pickh{font:600 22px/1.2 var(--disp);margin:30px 0 0}
+
+.tools{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 0 10px;margin-top:18px}
+.search{display:flex;align-items:center;gap:10px;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:0 16px}
+.search input{flex:1;border:0;background:none;padding:11px 0;outline:none;min-width:0}
+.search svg{width:18px;height:18px;fill:var(--mute);flex:none}
+.cats{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:none;border:0;background:none;padding:6px 12px;border-radius:999px;cursor:pointer;color:var(--mute);font-size:15px}
+.cats button.on{background:var(--ink);color:var(--bg)}
+
+section{scroll-margin-top:120px}
+h2{font:600 clamp(26px,6vw,34px)/1.2 var(--disp);margin:34px 0 6px}
+.items{display:grid;gap:0}
+.it{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+.it .t{flex:1;min-width:0}
+.it .n{font-weight:600;font-size:17px}
+.it .d{color:var(--mute);font-size:14.5px;margin-top:2px}
+.it .p{margin-top:6px;font-weight:600;color:var(--acc)}
+.it .p small{font-weight:400;color:var(--mute);font-size:13px;margin-inline-start:2px}
+.star{font-size:12.5px;color:var(--acc);margin-inline-start:8px;font-weight:500;white-space:nowrap}
+.q{display:flex;align-items:center;gap:6px;flex:none;margin-top:2px}
+.q button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surf);cursor:pointer;font-size:20px;line-height:1;display:grid;place-items:center}
+.q button.add{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.q span{min-width:16px;text-align:center;font-weight:600}
+.empty{display:none;color:var(--mute);padding:40px 0;text-align:center}
+.foot{color:var(--mute);font-size:13.5px;margin-top:40px;line-height:1.7}
+.foot a{color:var(--acc)}
+
+.bar{position:fixed;inset-inline:0;bottom:0;z-index:9;padding:12px 14px calc(12px + env(safe-area-inset-bottom));transform:translateY(130%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
 .bar.show{transform:none}
-.bar a{max-width:532px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;background:#1fae57;color:#fff;text-decoration:none;font-weight:700;padding:14px 18px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.bar a{max-width:560px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;padding:15px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+
+/* ---------- theme character ---------- */
+[data-theme=dining] h1,[data-theme=dining] h2{font-weight:700}
+[data-theme=dining] .cats button.on{background:var(--acc);color:var(--acc-ink)}
+[data-theme=dining] .it{border-bottom-style:dotted}
+[data-theme=dining] .pick{border-color:var(--line)}
+[data-theme=dining] .bar a{background:var(--acc);color:var(--acc-ink)}
+[data-theme=street] h1{font-weight:400;font-size:clamp(48px,14vw,96px);line-height:.95;text-shadow:3px 3px 0 var(--acc)}
+[data-theme=street] h2{font-weight:400;font-size:clamp(32px,8vw,44px)}
+[data-theme=street] .pick,[data-theme=street] .search{border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+[data-theme=street] .pick .im{border-bottom:2.5px solid var(--ink)}
+[data-theme=street] .it{border-bottom:2px dashed rgba(27,27,27,.35)}
+[data-theme=street] .it .p{color:var(--ink);background:var(--surf);display:inline-block;padding:0 10px;border:2px solid var(--ink);border-radius:8px}
+[data-theme=street] .q button{border:2px solid var(--ink)}
+[data-theme=street] .q button.add{box-shadow:2px 2px 0 var(--ink)}
+[data-theme=street] .star{background:var(--acc);color:#fff;padding:1px 8px;border-radius:6px;transform:rotate(-3deg);display:inline-block}
+[data-theme=street] .bar a{background:var(--acc);color:#fff;border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+[data-theme=sweet] .star{color:var(--ink);background:var(--acc2);padding:1px 10px;border-radius:999px}
+[data-theme=sweet] .it{background:var(--surf);border:0;border-radius:var(--radius);padding:16px 18px;margin-bottom:10px}
+[data-theme=sweet] .items{gap:0}
+[data-theme=sweet] .bar a{background:var(--acc);color:#fff}
+[data-theme=cafe] h2{font-weight:600}
+[data-theme=cafe] .it .p{color:var(--ink)}
+
+/* ---------- laptop / desktop ---------- */
+@media (min-width:980px){
+ body{display:grid;grid-template-columns:minmax(380px,42%) 1fr;min-height:100vh}
+ .demo{position:fixed;top:0;inset-inline:0;z-index:20}
+ .side{position:sticky;top:0;height:100vh;min-height:0;padding-top:34px}
+ .side .in{padding:40px 48px 44px}
+ h1{font-size:clamp(56px,5.4vw,92px)}
+ [data-theme=street] h1{font-size:clamp(64px,6.4vw,112px)}
+ .qr{display:flex;align-items:center;gap:14px;margin-top:26px;font-size:13.5px;opacity:.92;max-width:330px}
+ .qr img{width:78px;height:78px;background:#fff;padding:5px;border-radius:10px}
+ .lang{top:48px}
+ .menu{padding:58px 56px 130px;max-width:none;width:100%}
+ .menu>*{max-width:900px}
+ .picks{margin:26px 0 6px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);overflow:visible}
+ .pick{width:auto}
+ .items{grid-template-columns:1fr 1fr;column-gap:40px}
+ [data-theme=sweet] .items{column-gap:14px}
+ .tools{display:flex;gap:16px;align-items:center}
+ .tools .search{width:300px;flex:none}
+ .cats{margin-top:0}
+ .bar{inset-inline-start:auto;width:min(560px,58%)}
+}
 </style>
 </head>
 <body>
 <div class="demo" data-t="demo"></div>
-<header class="cover">
- <button class="lang" id="lang">EN</button>
- <div class="logo">☕</div>
- <h1 id="name"></h1>
- <div class="sub" id="area"></div>
- <div class="open"><i></i><span data-t="open"></span></div>
-</header>
-<div class="wrap">
- <div class="actions">
-  <a href="tel:+962795076938"><span>📞</span><b data-t="call"></b></a>
-  <a href="https://www.google.com/maps/search/?api=1&amp;query=31.8881393,35.8339908" target="_blank" rel="noopener"><span>📍</span><b data-t="map"></b></a>
-  <a href="https://wa.me/962795076938" target="_blank" rel="noopener"><span>💬</span><b data-t="wa"></b></a>
+<aside class="side">
+ <div class="photo" style="background-image:url('https://m7md179.github.io/menu-samples/_img/cafe-hero.jpg')"></div>
+ <button class="lang" id="lang" aria-label="Switch language">EN</button>
+ <div class="in">
+  <h1 id="name"></h1>
+  <p class="where" id="area"></p>
+  <div class="acts">
+   <a href="tel:+962795076938"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span data-t="call"></span></a>
+   <a href="https://www.google.com/maps/search/?api=1&amp;query=31.8881393,35.8339908" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span data-t="map"></span></a>
+   <a class="wa" href="https://wa.me/962795076938" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2s-1 .3-3.4-.7a11.6 11.6 0 0 1-4.6-4c-.4-.5-1-1.6-1-2.7s.6-1.7.8-2a.9.9 0 0 1 .6-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.3.5-.4.4c-.1.2-.3.3-.1.6a8.7 8.7 0 0 0 1.6 2 7.9 7.9 0 0 0 2.3 1.4c.3.1.5.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.9.9c.3.1.4.2.5.3s0 .8-.1 1.5z"/></svg><span data-t="wa"></span></a>
+  </div>
+  <div class="qr"><img src="qr.png" alt=""><span data-t="qr"></span></div>
  </div>
- <div class="search"><b>🔍</b><input id="q" type="search" autocomplete="off"></div>
- <nav id="nav"></nav>
- <main id="menu"></main>
- <div class="empty" id="empty" data-t="none"></div>
- <div class="qr"><img src="qr.png" alt="QR"><span data-t="qr"></span></div>
- <footer><span data-t="by"></span> <a href="https://tahamedia.online">Taha Media</a></footer>
-</div>
+</aside>
+<main class="menu">
+ <p class="pickh" data-t="picks"></p>
+ <div class="picks" id="picks"></div>
+ <div class="tools">
+  <label class="search"><svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 0 1 6.3 12.9l5.4 5.4-1.4 1.4-5.4-5.4A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg><input id="q" type="search" autocomplete="off"></label>
+  <nav class="cats" id="cats"></nav>
+ </div>
+ <div id="menu"></div>
+ <p class="empty" id="empty" data-t="none"></p>
+ <p class="foot"><span data-t="foot"></span> <a href="https://tahamedia.online">Taha Media</a></p>
+</main>
 <div class="bar" id="bar"><a id="order" target="_blank" rel="noopener"><span id="ordtxt"></span><span id="ordsum"></span></a></div>
 <script>
-const D={"name": {"ar": "Al-Mozn | المٓزنْ", "en": "AlMozn"}, "area": {"ar": "Princess Taghreed Moh'd Street · عمّان", "en": "Amman, Jordan"}, "phone": "962795076938", "sections": [{"ar": "قهوة ساخنة", "en": "Hot Coffee", "items": [{"ar": "اسبريسو", "en": "Espresso", "d_ar": "شوت مزدوج", "d_en": "Double shot", "price": "1.75", "hot": false}, {"ar": "أمريكانو", "en": "Americano", "d_ar": "", "d_en": "", "price": "2.00", "hot": false}, {"ar": "كابتشينو", "en": "Cappuccino", "d_ar": "رغوة حليب كثيفة", "d_en": "Thick milk foam", "price": "2.50", "hot": true}, {"ar": "سبانش لاتيه", "en": "Spanish Latte", "d_ar": "بالحليب المكثف", "d_en": "With condensed milk", "price": "3.00", "hot": true}, {"ar": "قهوة عربية", "en": "Arabic Coffee", "d_ar": "بالهيل", "d_en": "With cardamom", "price": "1.50", "hot": false}]}, {"ar": "مشروبات باردة", "en": "Cold Drinks", "items": [{"ar": "آيس لاتيه", "en": "Iced Latte", "d_ar": "", "d_en": "", "price": "2.75", "hot": false}, {"ar": "موهيتو", "en": "Mojito", "d_ar": "نعنع وليمون، بدون كحول", "d_en": "Mint and lime, alcohol-free", "price": "3.00", "hot": false}, {"ar": "عصير برتقال", "en": "Fresh Orange", "d_ar": "طازج", "d_en": "Fresh", "price": "2.50", "hot": false}]}, {"ar": "حلويات", "en": "Desserts", "items": [{"ar": "تشيز كيك", "en": "Cheesecake", "d_ar": "بصوص التوت", "d_en": "Berry sauce", "price": "3.50", "hot": true}, {"ar": "كيكة شوكولاتة", "en": "Chocolate Cake", "d_ar": "", "d_en": "", "price": "3.00", "hot": false}, {"ar": "كوكيز", "en": "Cookies", "d_ar": "", "d_en": "", "price": "1.50", "hot": false}]}]};
-const T={ar:{demo:"نموذج تجريبي مجاني أُعدّ لـ "+D.name.ar+" · الأصناف والأسعار للتوضيح فقط",open:"قائمة رقمية",call:"اتصال",map:"الموقع",wa:"واتساب",
- search:"ابحث في القائمة…",none:"لا توجد نتائج",qr:"هذا الرمز يُطبع على الطاولات ويفتح القائمة مباشرة",by:"تصميم",cur:"د.أ",hot:"الأكثر طلبًا",
- order:n=>"أرسل الطلب ("+n+")",hello:"مرحبا، بدي أطلب:",total:"المجموع"},
- en:{demo:"Free demo made for "+D.name.en+" · items and prices are examples only",open:"Digital menu",call:"Call",map:"Location",wa:"WhatsApp",
- search:"Search the menu…",none:"No matching items",qr:"Print this code on your tables — it opens the menu instantly",by:"Made by",cur:"JOD",hot:"Best seller",
- order:n=>"Send order ("+n+")",hello:"Hi, I'd like to order:",total:"Total"}};
-let L="ar";const cart={};
-const $=s=>document.querySelector(s);
+const D={"name": {"ar": "Al-Mozn | المٓزنْ", "en": "AlMozn"}, "area": {"ar": "Princess Taghreed Moh'd Street · عمّان", "en": "Amman, Jordan"}, "phone": "962795076938", "sections": [{"ar": "قهوة ساخنة", "en": "Hot Coffee", "items": [{"ar": "اسبريسو", "en": "Espresso", "d_ar": "شوت مزدوج", "d_en": "Double shot", "price": "1.75", "hot": false}, {"ar": "أمريكانو", "en": "Americano", "d_ar": "", "d_en": "", "price": "2.00", "hot": false}, {"ar": "كابتشينو", "en": "Cappuccino", "d_ar": "رغوة حليب كثيفة", "d_en": "Thick milk foam", "price": "2.50", "hot": true, "img": "https://m7md179.github.io/menu-samples/_img/cappuccino.jpg"}, {"ar": "سبانش لاتيه", "en": "Spanish Latte", "d_ar": "بالحليب المكثف", "d_en": "With condensed milk", "price": "3.00", "hot": true, "img": "https://m7md179.github.io/menu-samples/_img/spanish-latte.jpg"}, {"ar": "قهوة عربية", "en": "Arabic Coffee", "d_ar": "بالهيل", "d_en": "With cardamom", "price": "1.50", "hot": false}]}, {"ar": "مشروبات باردة", "en": "Cold Drinks", "items": [{"ar": "آيس لاتيه", "en": "Iced Latte", "d_ar": "", "d_en": "", "price": "2.75", "hot": false}, {"ar": "موهيتو", "en": "Mojito", "d_ar": "نعنع وليمون، بدون كحول", "d_en": "Mint and lime, alcohol-free", "price": "3.00", "hot": false}, {"ar": "عصير برتقال", "en": "Fresh Orange", "d_ar": "طازج", "d_en": "Fresh", "price": "2.50", "hot": false}]}, {"ar": "حلويات", "en": "Desserts", "items": [{"ar": "تشيز كيك", "en": "Cheesecake", "d_ar": "بصوص التوت", "d_en": "Berry sauce", "price": "3.50", "hot": true, "img": "https://m7md179.github.io/menu-samples/_img/cheesecake.jpg"}, {"ar": "كيكة شوكولاتة", "en": "Chocolate Cake", "d_ar": "", "d_en": "", "price": "3.00", "hot": false}, {"ar": "كوكيز", "en": "Cookies", "d_ar": "", "d_en": "", "price": "1.50", "hot": false}]}]};
+const T={ar:{demo:"هذا نموذج مجاني صمّمناه لـ "+D.name.ar+". الأصناف والأسعار أمثلة فقط.",call:"اتصال",map:"الموقع",wa:"واتساب",picks:"الأكثر طلبًا",
+ search:"ابحث عن صنف",none:"ما في صنف بهذا الاسم.",qr:"اطبع هذا الرمز على الطاولات، يفتح القائمة مباشرة من كاميرا الجوال.",foot:"قائمة رقمية من تصميم",cur:"د.أ",star:"الأكثر طلبًا",
+ order:n=>"أرسل الطلب على واتساب ("+n+")",hello:"مرحبا، بدي أطلب:",total:"المجموع"},
+ en:{demo:"A free demo we designed for "+D.name.en+". Items and prices are examples only.",call:"Call",map:"Directions",wa:"WhatsApp",picks:"Most ordered",
+ search:"Search the menu",none:"No item matches that name.",qr:"Print this code on your tables. It opens the menu straight from a phone camera.",foot:"Digital menu designed by",cur:"JOD",star:"Most ordered",
+ order:n=>"Send order on WhatsApp ("+n+")",hello:"Hi, I'd like to order:",total:"Total"}};
+let L="ar";const cart={};const $=s=>document.querySelector(s);
+const all=[];D.sections.forEach((s,i)=>s.items.forEach((it,j)=>all.push({...it,k:i+"-"+j})));
 function render(){
  const t=T[L];document.documentElement.lang=L;document.documentElement.dir=L=="ar"?"rtl":"ltr";
- $("#lang").textContent=L=="ar"?"EN":"عربي";$("#name").textContent=D.name[L];$("#area").textContent=D.area[L];
+ $("#lang").textContent=L=="ar"?"English":"عربي";$("#name").textContent=D.name[L];$("#area").textContent=D.area[L];
  document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t[e.dataset.t]);$("#q").placeholder=t.search;
- $("#nav").innerHTML=D.sections.map((s,i)=>`<button data-i="${i}">${s[L]}</button>`).join("");
- $("#menu").innerHTML=D.sections.map((s,i)=>`<section id="s${i}"><h2>${s[L]}</h2>`+s.items.map((it,j)=>{const k=i+"-"+j;return `
-  <div class="item" data-k="${k}" data-s="${(it.ar+" "+it.en).toLowerCase()}"><div class="t"><div class="n">${it[L]}${it.hot?`<span class="hot">${t.hot}</span>`:""}</div>
-  ${it["d_"+L]?`<div class="d">${it["d_"+L]}</div>`:""}<div class="p">${it.price} <small>${t.cur}</small></div></div>
-  <div class="qty">${cart[k]?`<button data-k="${k}" data-d="-1">−</button><span>${cart[k]}</span>`:""}<button class="add" data-k="${k}" data-d="1">+</button></div></div>`}).join("")+"</section>").join("");
+ const picks=all.filter(x=>x.img);
+ $("#picks").innerHTML=picks.map(x=>`<div class="pick"><div class="im" style="background-image:url('${x.img}')"></div><div class="tx"><b>${x[L]}</b><span>${x.price} ${t.cur}</span></div></div>`).join("");
+ $("#picks").style.display=$(".pickh").style.display=picks.length?"":"none";
+ $("#cats").innerHTML=D.sections.map((s,i)=>`<button data-i="${i}">${s[L]}</button>`).join("");
+ $("#menu").innerHTML=D.sections.map((s,i)=>`<section id="s${i}"><h2>${s[L]}</h2><div class="items">`+s.items.map((it,j)=>{const k=i+"-"+j;return `
+  <div class="it" data-s="${(it.ar+" "+it.en).toLowerCase()}"><div class="t"><div class="n">${it[L]}${it.hot?`<span class="star">${t.star}</span>`:""}</div>
+  ${it["d_"+L]?`<div class="d">${it["d_"+L]}</div>`:""}<div class="p">${it.price}<small>${t.cur}</small></div></div>
+  <div class="q">${cart[k]?`<button data-k="${k}" data-d="-1" aria-label="-">−</button><span>${cart[k]}</span>`:""}<button class="add" data-k="${k}" data-d="1" aria-label="+">+</button></div></div>`}).join("")+"</div></section>").join("");
  filter();bar();spy();
 }
 function filter(){const q=$("#q").value.trim().toLowerCase();let any=0;
- document.querySelectorAll("section").forEach(s=>{let n=0;s.querySelectorAll(".item").forEach(e=>{const ok=!q||e.dataset.s.includes(q);e.style.display=ok?"":"none";n+=ok});s.style.display=n?"":"none";any+=n});
+ document.querySelectorAll("section").forEach(s=>{let n=0;s.querySelectorAll(".it").forEach(e=>{const ok=!q||e.dataset.s.includes(q);e.style.display=ok?"":"none";n+=ok});s.style.display=n?"":"none";any+=n});
  $("#empty").style.display=any?"none":"block";}
 function bar(){const t=T[L];let n=0,sum=0,lines=[];
- for(const k in cart){const[i,j]=k.split("-");const it=D.sections[i].items[j];n+=cart[k];sum+=cart[k]*it.price;lines.push(cart[k]+" × "+it[L])}
+ for(const k in cart){const it=all.find(x=>x.k==k);n+=cart[k];sum+=cart[k]*it.price;lines.push(cart[k]+" × "+it[L])}
  $("#bar").classList.toggle("show",n>0);$("#ordtxt").textContent=t.order(n);$("#ordsum").textContent=sum.toFixed(2)+" "+t.cur;
  $("#order").href="https://wa.me/"+D.phone+"?text="+encodeURIComponent(t.hello+"\n"+lines.join("\n")+"\n"+t.total+": "+sum.toFixed(2)+" "+t.cur);}
-function spy(){const b=[...document.querySelectorAll("nav button")];let cur=0;
- document.querySelectorAll("section").forEach((s,i)=>{if(s.getBoundingClientRect().top<120)cur=i});b.forEach((x,i)=>x.classList.toggle("on",i==cur));}
+function spy(){const b=[...document.querySelectorAll(".cats button")];let cur=0;
+ document.querySelectorAll("section").forEach((s,i)=>{if(s.getBoundingClientRect().top<160)cur=i});b.forEach((x,i)=>x.classList.toggle("on",i==cur));}
 document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
  if(b.id=="lang"){L=L=="ar"?"en":"ar";render()}
  else if(b.dataset.i!=null)document.getElementById("s"+b.dataset.i).scrollIntoView({behavior:"smooth"});
